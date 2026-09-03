@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>System Message: Teacher's Day</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    .home-page {
+      background:
+        radial-gradient(circle at top left, #244a78, transparent 35%),
+        linear-gradient(135deg, #07152b, #102f52, #07152b);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 25px;
+    }
+
+    .code-background {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .code-background span {
+      position: absolute;
+      color: #57e6ff;
+      font-family: monospace;
+      font-size: 1.2rem;
+      animation: moveCode 12s linear infinite;
+    }
+
+    .code-background span:nth-child(1) {
+      left: 5%;
+      top: 15%;
+    }
+
+    .code-background span:nth-child(2) {
+      left: 70%;
+      top: 10%;
+      animation-delay: 2s;
+    }
+
+    .code-background span:nth-child(3) {
+      left: 25%;
+      top: 75%;
+      animation-delay: 4s;
+    }
+
+    .code-background span:nth-child(4) {
+      left: 75%;
+      top: 65%;
+      animation-delay: 1s;
+    }
+
+    .code-background span:nth-child(5) {
+      left: 45%;
+      top: 30%;
+      animation-delay: 3s;
+    }
+
+    .code-background span:nth-child(6) {
+      left: 10%;
+      top: 50%;
+      animation-delay: 5s;
+    }
+
+    @keyframes moveCode {
+      0% {
+        transform: translateY(40px);
+      }
+
+      50% {
+        transform: translateY(-40px);
+      }
+
+      100% {
+        transform: translateY(40px);
+      }
+    }
+
+    .welcome-box {
+      width: 100%;
+      max-width: 650px;
+      padding: 45px 30px;
+      text-align: center;
+      border: 1px solid rgba(87, 230, 255, 0.5);
+      border-radius: 25px;
+      background: rgba(9, 28, 54, 0.85);
+      box-shadow: 0 0 35px rgba(87, 230, 255, 0.25);
+      position: relative;
+      z-index: 2;
+    }
+
+    .computer-icon {
+      font-size: 5rem;
+      animation: computerFloat 2s ease-in-out infinite;
+    }
+
+    @keyframes computerFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .small-text {
+      color: #58e6ff;
+      font-family: monospace;
+      letter-spacing: 3px;
+      font-size: 0.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      margin: 15px 0;
+      text-shadow: 0 0 18px #3fdfff;
+    }
+
+    .welcome-box h2 {
+      color: #70eaff;
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
+    }
+
+    .intro {
+      max-width: 500px;
+      margin: 25px auto;
+      line-height: 1.7;
+      color: #d9f8ff;
+    }
+
+    .loading-bar {
+      height: 12px;
+      width: 80%;
+      margin: 25px auto 10px;
+      background: #18395d;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .loading-bar div {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, #33d6ff, #7dffce);
+      animation: loading 3s ease-in-out;
+    }
+
+    @keyframes loading {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 100%;
+      }
+    }
+
+    .loading-text {
+      color: #9dc8d8;
+      font-family: monospace;
+    }
+
+    .main-button {
+      display: inline-block;
+      text-decoration: none;
+      margin-top: 25px;
+      padding: 15px 28px;
+      border-radius: 30px;
+      color: #06213c;
+      background: linear-gradient(135deg, #7dffce, #57e6ff);
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .main-button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 25px #57e6ff;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 12px;
+      width: 100%;
+      text-align: center;
+      color: #9dc8d8;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 480px) {
+      .welcome-box {
+        padding: 30px 20px;
+      }
+
+      .computer-icon {
+        font-size: 4rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="home-page">
+
+  <div class="code-background">
+    <span>&lt;html&gt;</span>
+    <span>console.log("Thank You");</span>
+    <span>01010101</span>
+    <span>function inspire() {}</span>
+    <span>&lt;/&gt;</span>
+    <span>print("Best Teacher")</span>
+  </div>
+
+  <main class="welcome-box">
+    <div class="computer-icon">💻</div>
+
+    <p class="small-text">SYSTEM IS LAGGING😁 </p>
+
+    <h1>Happy Teacher's Day</h1>
+
+    <h2>To Our Govind sir🙂‍↔️ </h2>
+
+    <p class="intro">
+      A special digital surprise has been created for the teacher
+      who makes technology simple, interesting, and exciting.
+    </p>
+
+    <div class="loading-bar">
+      <div></div>
+    </div>
+
+    <p class="loading-text">Loading appreciation...</p>
+
+    <a href="message.html" class="main-button">
+      Open the Surprise 🚀
+    </a>
+  </main>
+
+  <footer>
+    Designed with gratitude and little bit of code ❤️
+  </footer>
+
+</body>
+</html>

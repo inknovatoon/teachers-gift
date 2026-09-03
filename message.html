@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Thank You, Computer Teacher</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .message-page {
+      background:
+        radial-gradient(circle at top right, #273e87, transparent 35%),
+        linear-gradient(135deg, #080d2b, #11194a, #080d2b);
+
+      padding: 35px 15px;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#9cecff 1px, transparent 1px);
+
+      background-size: 70px 70px, 110px 110px;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    .message-container {
+      max-width: 950px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .small-text {
+      color: #58e6ff;
+      font-family: monospace;
+      letter-spacing: 3px;
+      font-size: 0.8rem;
+    }
+
+    .main-title {
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      margin: 8px 0;
+      color: #a6f7ff;
+      text-shadow: 0 0 18px #3fdfff;
+    }
+
+    .teacher-card {
+      max-width: 700px;
+      margin: 25px auto;
+      padding: 30px;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(166, 247, 255, 0.5);
+      box-shadow: 0 0 30px rgba(93, 229, 255, 0.18);
+    }
+
+    .teacher-emoji {
+      font-size: 4rem;
+    }
+
+    .teacher-card h2 {
+      color: #7dffce;
+    }
+
+    .teacher-card p {
+      min-height: 90px;
+      line-height: 1.7;
+      color: #e6faff;
+    }
+
+    .appreciation-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .app-card {
+      padding: 22px 15px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.11);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: 0.3s;
+    }
+
+    .app-card:hover {
+      transform: translateY(-10px);
+      background: rgba(125, 255, 206, 0.16);
+      box-shadow: 0 0 20px rgba(125, 255, 206, 0.25);
+    }
+
+    .app-icon {
+      font-size: 2.5rem;
+    }
+
+    .app-card h3 {
+      color: #7dffce;
+    }
+
+    .app-card p {
+      color: #d9eaff;
+      line-height: 1.5;
+      font-size: 0.9rem;
+    }
+
+    .reveal-button {
+      margin-top: 35px;
+      padding: 15px 27px;
+      border: none;
+      border-radius: 30px;
+      color: #07152b;
+      background: linear-gradient(135deg, #ffd86f, #ff9f68);
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .reveal-button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 25px #ffd86f;
+    }
+
+    .final-message {
+      display: none;
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 30px;
+      border-radius: 25px;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 216, 111, 0.2),
+        rgba(125, 255, 206, 0.16)
+      );
+
+      border: 1px solid #ffd86f;
+      animation: reveal 1s ease;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: scale(0.7);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .trophy {
+      font-size: 4rem;
+    }
+
+    .final-message h2 {
+      color: #ffd86f;
+      font-size: 2rem;
+    }
+
+    .final-message p {
+      line-height: 1.7;
+    }
+
+    .quote {
+      color: #a6f7ff;
+      font-style: italic;
+    }
+
+    .back-button {
+      display: inline-block;
+      text-decoration: none;
+      margin-top: 25px;
+      padding: 13px 25px;
+      border-radius: 30px;
+      color: #a6f7ff;
+      border: 1px solid #a6f7ff;
+      transition: 0.3s;
+    }
+
+    .back-button:hover {
+      transform: scale(1.08);
+      background: rgba(166, 247, 255, 0.15);
+    }
+
+    .confetti {
+      position: fixed;
+      top: -40px;
+      font-size: 25px;
+      animation: fall linear forwards;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+
+    @media (max-width: 750px) {
+      .appreciation-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .appreciation-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .teacher-card {
+        padding: 22px 17px;
+      }
+    }
+  </style>
+</head>
+
+<body class="message-page">
+
+  <div class="stars"></div>
+
+  <main class="message-container">
+
+    <p class="small-text">ACCESS GRANTED ✅</p>
+
+    <h1 class="main-title">A Message for You</h1>
+
+    <div class="teacher-card">
+      <div class="teacher-emoji">👨‍🏫</div>
+
+      <h2>To Our Sir</h2>
+
+      <p id="typing-message"></p>
+    </div>
+
+    <section class="appreciation-grid">
+
+      <div class="app-card">
+        <div class="app-icon">🧠</div>
+
+        <h3>Your Teaches </h3>
+
+        <p>
+          You teach us more than computers.You teaches us for learning age doesn't matter.
+        </p>
+      </div>
+
+      <div class="app-card">
+        <div class="app-icon">💡</div>
+
+        <h3>You Inspire Us</h3>
+
+        <p>
+          Every lesson gives us a new idea and every explanation makes
+          difficult topics easier to understand.
+        </p>
+      </div>
+
+      <div class="app-card">
+        <div class="app-icon">🌐</div>
+
+        <h3>You Connect Us</h3>
+
+        <p>
+          You connect our curiosity with the world of technology,
+          creativity, and future opportunities.
+        </p>
+      </div>
+
+      <div class="app-card">
+        <div class="app-icon">🏆</div>
+
+        <h3>You Make a Difference</h3>
+
+        <p>
+          Your patience, knowledge, and kindness make every computer
+          period special.
+        </p>
+      </div>
+
+    </section>
+
+    <button class="reveal-button" onclick="revealFinalMessage()">
+      Click for the Final Message ✨
+    </button>
+
+    <div id="final-message" class="final-message">
+      <div class="trophy">🏆</div>
+
+      <h2>Thank You, Sir!</h2>
+
+      <p>
+        You are not just teaching us how to use technology.
+        You are helping us create our future.
+      </p>
+
+      <p class="quote">
+        “A great teacher can inspire hope, ignite imagination,
+        and create a love for learning.”
+      </p>
+
+      <h3>Happy Teacher's Day! 🎉</h3>
+
+      <p>
+        With respect, gratitude and hope;<br>
+        <strong> ANKUSH!! <br> ur role player... </strong>
+      </p>
+    </div>
+
+    <a href="index.html" class="back-button">
+      ← Go Back
+    </a>
+
+  </main>
+
+  <script>
+    const message =
+      "Thank u for guiding us your guidance helps us learn, explore, and believe that we can build amazing things.And also thank you for giving us permission sometimes to play games. ";
+
+    let index = 0;
+
+    function typeMessage() {
+      if (index < message.length) {
+        document.getElementById("typing-message").innerHTML +=
+          message.charAt(index);
+
+        index++;
+
+        setTimeout(typeMessage, 35);
+      }
+    }
+
+    function revealFinalMessage() {
+      const finalMessage = document.getElementById("final-message");
+
+      finalMessage.style.display = "block";
+
+      for (let i = 0; i < 30; i++) {
+        createConfetti();
+      }
+    }
+
+    function createConfetti() {
+      const confetti = document.createElement("div");
+
+      confetti.className = "confetti";
+
+      confetti.innerHTML = ["🎉", "✨", "💙", "⭐", "🎊"][
+        Math.floor(Math.random() * 5)
+      ];
+
+      confetti.style.left = Math.random() * 100 + "vw";
+
+      confetti.style.animationDuration =
+        Math.random() * 3 + 3 + "s";
+
+      document.body.appendChild(confetti);
+
+      setTimeout(() => {
+        confetti.remove();
+      }, 6000);
+    }
+
+    window.onload = typeMessage;
+  </script>
+
+</body>
+</html>
